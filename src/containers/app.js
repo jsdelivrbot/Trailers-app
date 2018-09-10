@@ -34,12 +34,13 @@ class App extends Component {
   }
 
   applyVideoToCurrentMovie (){
-    axios.get(` ${API_END_POINT}movie/${this.state.currentMovie.id}?append_to_response=videos&include_adult=false&${API_KEY}`).then(function(response){
+    axios.get(` ${API_END_POINT}movie/${this.state.currentMovie.id}?${API_KEY}&append_to_response=videos&include_adult=false`).then(function(response){
     const youtubeKey = response.data.videos.results[0].key;
     let newCurrentMovieState = this.state.currentMovie;
     newCurrentMovieState.videoId = youtubeKey;
     this.setState({currentMovie : newCurrentMovieState})
     }.bind(this));
+    console.log('',this.state.currentMovie);
   }
   render() {
             const renderVideoList = () => {
@@ -52,7 +53,7 @@ class App extends Component {
                 <SearchBar />
                 <div className="row">
                   <div className="col-md-8">
-                   <video videoid={this.state.currentMovie.videoId} />
+                   <Video videoId={this.state.currentMovie.videoId} />
                   </div>
                   <div className="col-md-4">
                     {renderVideoList()}
