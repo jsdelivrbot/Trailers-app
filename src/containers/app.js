@@ -21,11 +21,24 @@ class App extends Component {
 
   iniMovies(){
     axios.get(`${API_END_POINT}${POPULAR_MOVIES_URL}&${API_KEY}`).then(function(response){
-      this.setState({currentMovie:response.data.results[0],movieList:response.data.results.slice(1,6)});
+      this.setState({currentMovie:response.data.results[0],movieList:response.data.results.slice(1,6)}, function(){
+        this.applyVideoToCurrentMovie();
+      });
 /*      console.log('',this.state.currentMovie);
       console.log("---");
       console.log('',this.state.movieList);
       console.log("---")*/
+    }.bind(this));
+  }
+
+  applyVideoToCurrentMovie (){
+    axios.get(` ${API_END_POINT}movie/${this.state.currentMovie.id}?append_to_response=videos&include_adult=false&${API_KEY}`).then(function(response){
+    const youtubeKey = response.data.videos.results[0].key;
+    let newCurrentMovieState = this.state.currentMovie;
+    newCurrentMovieState.videoId = youtubeKey;
+    this.setState({currentMovie : newCurrentMovieState})
+    console.log('---');
+    console.log('',newCurrentMovieState);
     }.bind(this));
   }
   render() {
