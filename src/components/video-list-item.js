@@ -5,11 +5,24 @@ const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500/";
   return <li>Un film recomande : {props.movie}</li>
 }*/
 
-const VideoListItem = ({movie}) => {
-  return <li>
-            <img height="100px" width="100px" src={`${IMAGE_BASE_URL}${movie.poster_path}`}/>
-            <h3>{movie.title}</h3>
+const VideoListItem = (props) => {
+  /*const movie = props.movie;*/
+  const {movie} = props;
+  return <li className="list-group-item" onClick={handleOnClick}>
+          <div className="media">
+          {/*Image plus text bien centre*/}
+            <div className="media-left">
+              <img className="media-object img-rounded" height="100px" width="100px" src={`${IMAGE_BASE_URL}${movie.poster_path}`}/>
+            </div>
+          <div className="media-body">
+                <h5 className="title_list_item">{movie.title}</h5>
+            </div>
+          </div>
           </li>
+  function handleOnClick() {
+    props.callback(movie);
+  }
+
 }
 
 export default VideoListItem;
