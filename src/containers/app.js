@@ -43,7 +43,7 @@ class App extends Component {
     console.log('',this.state.currentMovie);
   }
   receiveCallBack(movie){
-    this.setState({currentMovie:movie}, function(){
+    this.setState({currentMovie : movie}, function(){
       this.applyVideoToCurrentMovie();
     });
   }
