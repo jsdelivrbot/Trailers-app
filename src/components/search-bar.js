@@ -25,7 +25,7 @@ class SearchBar extends Component{
   }
 
   handleOnClick(event){
-    console.log('click');
+    this.props.callback(this.state.searchText);
 
   }
 }
