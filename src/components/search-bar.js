@@ -25,9 +25,11 @@ class SearchBar extends Component{
   }
 
   handleOnClick(event){
-    this.props.callback(this.state.searchText);
-
+    this.search();
   }
+  search(){
+      this.props.callback(this.state.searchText);
+    }
 }
 
 export default SearchBar;
