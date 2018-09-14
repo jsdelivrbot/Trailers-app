@@ -4,7 +4,17 @@ const BASE_URL="https://www.youtube.com/embed/";
 
 const Video = ({videoId}) => {
   if (!videoId) {
-    return <div>Loading...</div>
+    return  <div className="container">
+            <div className="loader">
+            <div className="face">
+              <div className="circle"></div>
+            </div>
+            <div className="face">
+              <div className="circle"></div>
+            </div>
+          </div>
+          </div>
+
   }
   const url = `https:www.youtube.com/embed/${videoId}`;
   return(
