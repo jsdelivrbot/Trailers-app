@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Title from '../components/title'
 import SearchBar from '../components/search-bar'
 import VideoDetail from '../components/video-detail'
 import Video from '../components/video'
@@ -78,6 +79,7 @@ class App extends Component {
             }
             return (
               <div>
+                <Title />
                 <div className="search-bar">
                   <SearchBar callback={this.onClickSearch.bind(this)}/>
                 </div>
