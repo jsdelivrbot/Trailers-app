@@ -79,7 +79,9 @@ class App extends Component {
             }
             return (
               <div>
+                <div className="title">
                 <Title />
+                </div>
                 <div className="search-bar">
                   <SearchBar callback={this.onClickSearch.bind(this)}/>
                 </div>
