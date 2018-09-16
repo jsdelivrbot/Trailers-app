@@ -1,0 +1,9 @@
+body{
+	background-image : url(background.png);
+	background-repeat : no-repeat;
+	position : absolute ;
+	top : 0px;
+	width : 100%;
+  right: 0px;
+
+}
